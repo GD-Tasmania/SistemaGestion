@@ -25,6 +25,12 @@ public class Gerente extends Empleado {
 
 	@Override
 	public String toString() {
-		return "Gerente [cantidadProyectos=" + cantidadProyectos + "]";
+		return "Gerente [cantidadProyectos=" + cantidadProyectos + ", departamentoAsociado=" + departamentoAsociado.getNombre() + "]";
+	}
+
+	@Override
+	public String contribuir(String contribucion) {
+		return "El gerente " + getNombre() + " publico una tarea del proyecto " 
+				+ getProyectoAsociado().getNombre() + "\nNota: " + contribucion;
 	}
 }

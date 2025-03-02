@@ -25,6 +25,13 @@ public class Tecnico extends Empleado {
 
 	@Override
 	public String toString() {
-		return "Tecnico [nombre=" + getNombre() + ", especializacion=" + especializacion + "]\n";
+		return "Tecnico [nombre=" + getNombre() + ", especializacion=" + especializacion + 
+				", proyectoAsignado=" + getProyectoAsociado().getNombre() + "]\n";
+	}
+
+	@Override
+	public String contribuir(String contribucion) {
+		return "El tecnico "+ getNombre() + " realizo una tarea del proyecto " 
+				+getProyectoAsociado().getNombre() + "\nNota: " + contribucion;
 	}
 }

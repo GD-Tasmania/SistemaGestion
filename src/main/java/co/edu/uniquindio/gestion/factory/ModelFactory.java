@@ -2,7 +2,7 @@ package co.edu.uniquindio.gestion.factory;
 
 import co.edu.uniquindio.gestion.model.*;
 import co.edu.uniquindio.gestion.model.GestionEmpresa;
-import co.edu.uniquindio.gestion.services.IModelFactoryServices;
+import co.edu.uniquindio.gestion.services.*;
 
 public class ModelFactory implements IModelFactoryServices {
 	private static ModelFactory modelFactory;
@@ -25,21 +25,17 @@ public class ModelFactory implements IModelFactoryServices {
 	}
 
 	@Override
-	public String buscarEmpleadosAsignadosProyectoNombre(String codigo) {
-		// TODO Auto-generated method stub
-		return null;
+	public String buscarEmpleadosAsignadosProyectoCodigo(String codigo) {
+		return gestionEmpresa.buscarEmpleadosAsignadosProyectoCodigo(codigo);
 	}
 
 	@Override
-	public String buscarDepartamentosAsociadosNombreProyecto(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+	public String cambiarDepartamentoGerenteCodigo(String codigoDepartamento, String codigoGerente) {
+		return gestionEmpresa.cambiarDepartamentoGerenteCodigo(codigoDepartamento, codigoGerente);
 	}
-
-	@Override
-	public String cambiarDepartamentoEmpleado(String codigo) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public String contribuir(String codigo, String contribucion) {
+		return gestionEmpresa.contribuir(codigo, contribucion);
 	}
 	
 	private void inicializarDatos() {
@@ -60,6 +56,7 @@ public class ModelFactory implements IModelFactoryServices {
 		gestionEmpresa.asociarDepartamentoTecnico(departamento1, tecnico1);
 		gestionEmpresa.asociarDepartamentoTecnico(departamento1, tecnico2);
 		gestionEmpresa.asociarDepartamentoTecnico(departamento1, tecnico5);
+		gestionEmpresa.asociarProyectoEmpleado(proyecto1, gerente1);
 		gestionEmpresa.asociarProyectoEmpleado(proyecto1, tecnico1);
 		gestionEmpresa.asociarProyectoEmpleado(proyecto1, tecnico2);
 		gestionEmpresa.asociarProyectoEmpleado(proyecto1, tecnico5);
@@ -67,18 +64,19 @@ public class ModelFactory implements IModelFactoryServices {
 		gestionEmpresa.asociarDepartamentoGerente(departamento2, gerente2);
 		gestionEmpresa.asociarDepartamentoTecnico(departamento2, tecnico3);
 		gestionEmpresa.asociarDepartamentoTecnico(departamento2, tecnico4);
+		gestionEmpresa.asociarProyectoEmpleado(proyecto1, gerente2);
 		gestionEmpresa.asociarProyectoEmpleado(proyecto2, tecnico3);
 		gestionEmpresa.asociarProyectoEmpleado(proyecto2, tecnico4);
 		gestionEmpresa.getListaDepartamentos().add(departamento1);
 		gestionEmpresa.getListaDepartamentos().add(departamento2);
 		gestionEmpresa.getListaProyectos().add(proyecto1);
 		gestionEmpresa.getListaProyectos().add(proyecto2);
-		gestionEmpresa.getListaGerentes().add(gerente1);
-		gestionEmpresa.getListaGerentes().add(gerente2);
-		gestionEmpresa.getListaTecnicos().add(tecnico1);
-		gestionEmpresa.getListaTecnicos().add(tecnico2);
-		gestionEmpresa.getListaTecnicos().add(tecnico3);
-		gestionEmpresa.getListaTecnicos().add(tecnico4);
-		gestionEmpresa.getListaTecnicos().add(tecnico5);
+		gestionEmpresa.agregarGerente(gerente1);
+		gestionEmpresa.agregarGerente(gerente2);
+		gestionEmpresa.agregarTecnico(tecnico1);
+		gestionEmpresa.agregarTecnico(tecnico2);
+		gestionEmpresa.agregarTecnico(tecnico3);
+		gestionEmpresa.agregarTecnico(tecnico4);
+		gestionEmpresa.agregarTecnico(tecnico5);
 	}
 }

@@ -7,7 +7,8 @@ public class GestionEmpresa {
 	private ArrayList<Proyecto> listaProyectos = new ArrayList<>();
 	private ArrayList<Gerente> listaGerentes = new ArrayList<>();
 	private ArrayList<Tecnico> listaTecnicos = new ArrayList<>();
-	
+	private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
+
 	public GestionEmpresa() {
 	}
 	
@@ -34,6 +35,49 @@ public class GestionEmpresa {
 	}
 	public void setListaTecnicos(ArrayList<Tecnico> listaTecnicos) {
 		this.listaTecnicos = listaTecnicos;
+	}
+	public ArrayList<Empleado> getListaEmpleados() {
+		return listaEmpleados;
+	}
+	public void setListaEmpleados(ArrayList<Empleado> listaEmpleados) {
+		this.listaEmpleados = listaEmpleados;
+	}
+	
+	public void agregarGerente(Gerente gerente) {
+		this.listaGerentes.add(gerente);
+		this.listaEmpleados.add(gerente);
+	}
+	
+	public void agregarTecnico(Tecnico tecnico) {
+		this.listaTecnicos.add(tecnico);
+		this.listaEmpleados.add(tecnico);
+	}
+	
+	public Departamento buscarDepartamento(String codigo) {
+		for(Departamento departamento : this.listaDepartamentos) {
+			if(departamento.getCodigo().equalsIgnoreCase(codigo)) {
+				return departamento;
+			}
+		}
+		return null;
+	}
+	
+	public Gerente buscarGerente(String codigo) {
+		for(Gerente gerente : this.listaGerentes) {
+			if(gerente.getCodigo().equalsIgnoreCase(codigo)) {
+				return gerente;
+			}
+		}
+		return null;
+	}
+	
+	public Empleado buscarEmpleado(String codigo) {
+		for(Empleado empleado : this.listaEmpleados) {
+			if(empleado.getCodigo().equalsIgnoreCase(codigo)) {
+				return empleado;
+			}
+		}
+		return null;
 	}
 	
 	public void asociarDepartamentoProyecto(Departamento departamento, Proyecto proyecto) {
@@ -66,5 +110,44 @@ public class GestionEmpresa {
 			}
 		}
 		return resultado;
+	}
+	
+	public String buscarEmpleadosAsignadosProyectoCodigo(String codigo) {
+		String resultado = "";
+		for(Proyecto proyecto : this.listaProyectos) {
+			if(proyecto.getCodigo().equalsIgnoreCase(codigo)) {
+				for(Empleado empleado : proyecto.getListaEmpleadosAsignados()) {
+					resultado+=empleado.toString();
+				}
+			}
+		}
+		return resultado;
+	}
+	
+	public String cambiarDepartamentoGerenteCodigo(String codigoDepartamento, String codigoGerente) {
+		String resultado = "";
+		Departamento departamento = buscarDepartamento(codigoDepartamento);
+		if(departamento != null) {
+			Gerente gerente = buscarGerente(codigoGerente);
+			if(gerente != null) {
+				departamento.setGerenteAsociado(gerente);
+				gerente.setDepartamentoAsociado(departamento);
+				resultado+="El gerente "+gerente.getNombre() + " se asoció al departamento de "+ departamento.getNombre();
+			} else {
+				resultado+="Gerente no encontrado";
+			}
+		} else {
+			resultado+="Departamento no encontrado";
+		}
+		return resultado;
+	}
+	
+	public String contribuir(String codigo, String contribucion) {
+		String mensaje = "";
+		Empleado empleado = buscarEmpleado(codigo);
+		if(empleado != null) {
+			mensaje+=empleado.contribuir(contribucion);
+		}
+		return mensaje;
 	}
 }
