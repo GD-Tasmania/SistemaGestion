@@ -1,13 +1,9 @@
 package co.edu.uniquindio.gestion.model;
 
-import java.util.ArrayList;
-
 public class Empleado {
 	private String nombre;
 	private String codigo;
-	private Departamento departamentoAsignado;
-	private Proyecto proyectoPrincipal;
-	private ArrayList<Proyecto> listaProyectosAsignados = new ArrayList<>();
+	private Proyecto proyectoAsociado;
 	
 	public Empleado(String nombre, String codigo) {
 		this.nombre = nombre;
@@ -28,24 +24,16 @@ public class Empleado {
 		this.codigo = codigo;
 	}
 
-	public Departamento getDepartamentoAsignado() {
-		return departamentoAsignado;
+	public Proyecto getProyectoAsociado() {
+		return proyectoAsociado;
 	}
-	public void setDepartamentoAsignado(Departamento departamentoAsignado) {
-		this.departamentoAsignado = departamentoAsignado;
-	}
-
-	public Proyecto getProyectoPrincipal() {
-		return proyectoPrincipal;
-	}
-	public void setProyectoPrincipal(Proyecto proyectoPrincipal) {
-		this.proyectoPrincipal = proyectoPrincipal;
+	public void setProyectoAsociado(Proyecto proyectoAsociado) {
+		this.proyectoAsociado = proyectoAsociado;
 	}
 
-	public ArrayList<Proyecto> getListaProyectosAsignados() {
-		return listaProyectosAsignados;
+	@Override
+	public String toString() {
+		return "Empleado [nombre=" + nombre + ", codigo=" + codigo + "]";
 	}
-	public void setListaProyectosAsignados(ArrayList<Proyecto> listaProyectosAsignados) {
-		this.listaProyectosAsignados = listaProyectosAsignados;
-	}
+	
 }

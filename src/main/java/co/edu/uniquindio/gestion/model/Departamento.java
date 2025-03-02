@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class Departamento {
 	private String nombre;
 	private String codigo;
-	private ArrayList<Empleado> listaEmpleadosDepartamento = new ArrayList<>();
+	private Proyecto proyectoAsociado;
+	private Gerente gerenteAsociado;
+	private ArrayList<Tecnico> listaTecnicos = new ArrayList<>();
 	
 	public Departamento(String nombre, String codigo) {
 		this.nombre = nombre;
@@ -26,10 +28,29 @@ public class Departamento {
 		this.codigo = codigo;
 	}
 
-	public ArrayList<Empleado> getListaEmpleadosDepartamento() {
-		return listaEmpleadosDepartamento;
+	public Proyecto getProyectoAsociado() {
+		return proyectoAsociado;
 	}
-	public void setListaEmpleadosDepartamento(ArrayList<Empleado> listaEmpleadosDepartamento) {
-		this.listaEmpleadosDepartamento = listaEmpleadosDepartamento;
+	public void setProyectoAsociado(Proyecto proyectoAsociado) {
+		this.proyectoAsociado = proyectoAsociado;
+	}
+
+	public Gerente getGerenteAsociado() {
+		return gerenteAsociado;
+	}
+	public void setGerenteAsociado(Gerente gerenteAsociado) {
+		this.gerenteAsociado = gerenteAsociado;
+	}
+
+	public ArrayList<Tecnico> getListaTecnicos() {
+		return listaTecnicos;
+	}
+	public void setListaTecnicos(ArrayList<Tecnico> listaTecnicos) {
+		this.listaTecnicos = listaTecnicos;
+	}
+
+	@Override
+	public String toString() {
+		return "Departamento [nombre=" + nombre + ", codigo=" + codigo + "]";
 	}
 }
