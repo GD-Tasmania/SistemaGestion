@@ -4,7 +4,7 @@ import co.edu.uniquindio.gestion.model.*;
 import co.edu.uniquindio.gestion.model.GestionEmpresa;
 import co.edu.uniquindio.gestion.services.*;
 
-public class ModelFactory implements IModelFactoryServices {
+public class ModelFactory implements IModelFactoryServices, IEmpleados {
 	private static ModelFactory modelFactory;
 	private GestionEmpresa gestionEmpresa;
 	

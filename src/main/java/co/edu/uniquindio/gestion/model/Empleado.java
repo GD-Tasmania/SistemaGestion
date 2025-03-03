@@ -1,7 +1,7 @@
 package co.edu.uniquindio.gestion.model;
 import co.edu.uniquindio.gestion.services.IContribuyente;
 
-public class Empleado implements IContribuyente {
+public abstract class Empleado implements IContribuyente {
 	private String nombre;
 	private String codigo;
 	private Proyecto proyectoAsociado;
@@ -35,11 +35,5 @@ public class Empleado implements IContribuyente {
 	@Override
 	public String toString() {
 		return "Empleado [nombre=" + nombre + ", codigo=" + codigo + "]";
-	}
-
-	@Override
-	public String contribuir(String contribucion) {
-		return "";
-	}
-	
+	}	
 }
